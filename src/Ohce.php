@@ -4,7 +4,7 @@ namespace Deg540\DockerPHPBoilerplate;
 
 class Ohce
 {
-    function greetings(string $name): string
+    public function greetings(string $name): string
     {
         $actualTime = date('H');
         if($actualTime >= 20 || $actualTime < 6){
@@ -17,5 +17,8 @@ class Ohce
             return '¡Buenas tardes '.$name.'!';
         }
         return 0;
+    }
+    public function palindrome(string $word): string{
+        return strrev($word);
     }
 }

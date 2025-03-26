@@ -88,5 +88,16 @@ class OhceTest extends TestCase
 
         $this->assertEquals('pots', $result);
     }
+
+    /**
+     * @test
+     */
+    public function givenWordStopWithExclamationWordReturnsAdiosAndFinishes()
+    {
+
+        $result = $this->ohce->palindrome('Stop!');
+
+        $this->assertEquals('Adios', $result);
+    }
 }
 

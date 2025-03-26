@@ -2,24 +2,24 @@
 main: build-image build-container
 
 build-image:
-	docker build -t docker-php-boilerplate .
+	docker build -t ohce-php .
 
 build-container:
-	docker run -dt --name docker-php-boilerplate -v .:/540/Boilerplate docker-php-boilerplate
-	docker exec docker-php-boilerplate composer install
+	docker run -dt --name ohce-php -v .:/540/Boilerplate ohce-php
+	docker exec ohce-php composer install
 
 start:
-	docker start docker-php-boilerplate
+	docker start ohce-php
 
 test: start
-	docker exec docker-php-boilerplate ./vendor/bin/phpunit tests/$(target)
+	docker exec ohce-php ./vendor/bin/phpunit tests/$(target)
 
 shell: start
-	docker exec -it docker-php-boilerplate /bin/bash
+	docker exec -it ohce-php /bin/bash
 
 stop:
-	docker stop docker-php-boilerplate
+	docker stop ohce-php
 
 clean: stop
-	docker rm docker-php-boilerplate
+	docker rm ohce-php
 	rm -rf vendor

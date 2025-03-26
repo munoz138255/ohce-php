@@ -66,4 +66,26 @@ class OhceTest extends TestCase
 
         $this->assertEquals('aloh', $result);
     }
+
+    /**
+     * @test
+     */
+    public function givenAPalindromeWordReturnBonitaPalabra()
+    {
+
+        $result = $this->ohce->palindrome('oto');
+
+        $this->assertEquals('¡Bonita palabra!', $result);
+    }
+
+    /**
+     * @test
+     */
+    public function givenWordstopWordReturnspots()
+    {
+
+        $result = $this->ohce->palindrome('stop');
+
+        $this->assertEquals('pots', $result);
+    }
 }

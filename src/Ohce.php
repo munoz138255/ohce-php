@@ -19,6 +19,9 @@ class Ohce
         return 0;
     }
     public function palindrome(string $word): string{
+        if($word === strrev($word)){
+            return '¡Bonita palabra!';
+        }
         return strrev($word);
     }
 }

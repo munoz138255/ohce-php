@@ -11,7 +11,7 @@ class OhceTest extends TestCase
     {
         parent::setUp();
         $this->ohce = new Ohce();
-        $this->actualTime = date('H');
+        $this->actualTime = date('H:i');
     }
 
     /**
@@ -19,7 +19,7 @@ class OhceTest extends TestCase
      */
     public function givenNameAsierBetween8pmAnd6amReturnsBuenasNochesAsier()
     {
-        if($this->actualTime < 20 || $this->actualTime > 6) {
+        if($this->actualTime < 20 || $this->actualTime >= 6) {
             $this->markTestSkipped('No estamos en este intervalo horario');
         }
 
@@ -33,7 +33,7 @@ class OhceTest extends TestCase
      */
     public function givenNameAsierBetween6amAnd12pmReturnsBuenosDiasAsier()
     {
-        if($this->actualTime < 6 || $this->actualTime > 12) {
+        if($this->actualTime < 6 || $this->actualTime >= 12) {
             $this->markTestSkipped('No estamos en este intervalo horario');
         }
 
@@ -47,7 +47,7 @@ class OhceTest extends TestCase
     public function givenNameAsierBetween12pmAnd8pmReturnsBuenasTardesAsier()
     {
 
-        if($this->actualTime < 12 || $this->actualTime > 20) {
+        if($this->actualTime < 12 || $this->actualTime >= 20) {
             $this->markTestSkipped('No estamos en este intervalo horario');
         }
 
@@ -89,3 +89,4 @@ class OhceTest extends TestCase
         $this->assertEquals('pots', $result);
     }
 }
+

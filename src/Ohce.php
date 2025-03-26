@@ -13,6 +13,9 @@ class Ohce
         if($actualTime >= 6 || $actualTime < 12){
             return '¡Buenos dias '.$name.'!';
         }
+        if($actualTime >= 12 || $actualTime < 20){
+            return '¡Buenas tardes '.$name.'!';
+        }
         return 0;
     }
 }

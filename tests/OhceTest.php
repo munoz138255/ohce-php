@@ -7,19 +7,23 @@ use PHPUnit\Framework\TestCase;
 
 class OhceTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->ohce = new Ohce();
+        $this->actualTime = date('H');
+    }
+
     /**
      * @test
      */
     public function givenNameAsierBetween8pmAnd6amReturnsBuenasNochesAsier()
     {
-        $ohce = new Ohce();
-
-        $actualTime = date('H');
-        if($actualTime < 20 || $actualTime > 6) {
+        if($this->actualTime < 20 || $this->actualTime > 6) {
             $this->markTestSkipped('No estamos en este intervalo horario');
         }
 
-        $result = $ohce->greetings('Asier');
+        $result = $this->ohce->greetings('Asier');
 
         $this->assertEquals('¡Buenas noches Asier', $result);
     }
@@ -29,15 +33,26 @@ class OhceTest extends TestCase
      */
     public function givenNameAsierBetween6amAnd12pmReturnsBuenosDiasAsier()
     {
-        $ohce = new Ohce();
-
-        $actualTime = date('H');
-        if($actualTime < 6 || $actualTime > 12) {
+        if($this->actualTime < 6 || $this->actualTime > 12) {
             $this->markTestSkipped('No estamos en este intervalo horario');
         }
 
-        $result = $ohce->greetings('Asier');
+        $result = $this->ohce->greetings('Asier');
 
         $this->assertEquals('¡Buenos dias Asier!', $result);
+    }
+    /**
+     * @test
+     */
+    public function givenNameAsierBetween12pmAnd8pmReturnsBuenasTardesAsier()
+    {
+
+        if($this->actualTime < 12 || $this->actualTime > 20) {
+            $this->markTestSkipped('No estamos en este intervalo horario');
+        }
+
+        $result = $this->ohce->greetings('Asier');
+
+        $this->assertEquals('¡Buenas tardes Asier!', $result);
     }
 }
